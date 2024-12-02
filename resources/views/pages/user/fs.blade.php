@@ -1,29 +1,19 @@
 @extends('layouts.user.main')
 @section('content')
 
-<!-- Start Banner Area -->
-<section class="banner-area">
+<!-- Start Flash Sale Banner Area -->
+<section class="banner-area" style="background-image: url('{{ asset('assets/templates/user/img/banner/banner-bg.jpg') }}'); background-size: cover; background-position: center;">
     <div class="container">
-        <div class="row fullscreen align-items-center justify-content-start">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-5 col-md-6">
-                        <div class="banner-content">
-                            <h1>Nike New <br>Collection!</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="banner-img">
-                            <img class="img-fluid" src="{{ asset('assets/templates/user/img/banner/banner-img.png') }}" alt="">
-                        </div>
-                    </div>
+        <div class="row fullscreen align-items-center justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="banner-content">
+                    <h1>Flash Sale - Up to 50% OFF!</h1>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- End Banner Area -->
+<!-- End Flash Sale Banner Area -->
 
 <!-- Start Product Area -->
 <section class="section_gap">
@@ -31,8 +21,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 text-center">
                 <div class="section-title">
-                    <h1>Latest Products</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h1>Flash Sale Products</h1>
+                    <p>Get the best deals while they last! Hurry up and grab your favorites.</p>
                 </div>
             </div>
         </div>
@@ -46,7 +36,8 @@
                             <h6>{{ $item->name }}</h6>
                             <div class="price">
                                 @if($item->discount > 0)
-                                    <h6>{{ $item->price }} Points</h6>
+                                    <h6><del>{{ $item->price }} Points</del></h6>
+                                    <h6>{{ $item->price - ($item->price * $item->discount / 100) }} Points</h6>
                                 @else
                                     <h6>{{ $item->price }} Points</h6>
                                 @endif
@@ -67,7 +58,7 @@
             @empty
                 <div class="col-lg-12 col-md-12">
                     <div class="single-product">
-                        <h3 class="text-center">Tidak ada produk</h3>
+                        <h3 class="text-center">Tidak ada produk flash sale saat ini.</h3>
                     </div>
                 </div>
             @endforelse
